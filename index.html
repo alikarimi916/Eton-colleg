@@ -1,0 +1,2666 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#050913">
+    <meta
+        name="description"
+        content="SMART SIX — Advanced English Examination Platform"
+    >
+
+    <title>SMART SIX — Advanced English Examination</title>
+
+    <style>
+        /* =========================================================
+           SMART SIX — INDEX
+           Premium futuristic landing page
+           ========================================================= */
+
+        :root {
+            --bg: #030712;
+            --bg2: #07111f;
+
+            --panel: rgba(10, 20, 36, .72);
+            --panel-solid: #0a1424;
+
+            --border: rgba(255,255,255,.09);
+            --border-hover: rgba(100,180,255,.32);
+
+            --text: #f5f8ff;
+            --muted: #91a1b8;
+            --dim: #596a82;
+
+            --blue: #5ea7ff;
+            --cyan: #35d9ff;
+            --purple: #8b6cff;
+            --green: #35d49a;
+            --yellow: #ffc857;
+
+            --radius: 24px;
+
+            --shadow:
+                0 30px 100px rgba(0,0,0,.45),
+                inset 0 1px 0 rgba(255,255,255,.035);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(94,167,255,.13),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(139,108,255,.13),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 50% 85%,
+                    rgba(53,217,255,.07),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    180deg,
+                    var(--bg),
+                    var(--bg2)
+                );
+
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+            z-index: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 48px 48px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+            z-index: 9999;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 45%,
+                    rgba(0,0,0,.32)
+                );
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* =========================================================
+           LOADER
+           ========================================================= */
+
+        .loader {
+            position: fixed;
+            inset: 0;
+
+            z-index: 99999;
+
+            display: grid;
+            place-items: center;
+
+            background: #030712;
+
+            transition:
+                opacity .7s ease,
+                visibility .7s ease;
+        }
+
+        .loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-core {
+            text-align: center;
+        }
+
+        .loader-logo {
+            position: relative;
+
+            width: 90px;
+            height: 90px;
+
+            display: grid;
+            place-items: center;
+
+            margin: auto;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 0 80px rgba(94,167,255,.35);
+
+            animation:
+                loaderPulse 1.8s ease-in-out infinite;
+        }
+
+        .loader-logo::before {
+            content: "";
+
+            position: absolute;
+            inset: -8px;
+
+            border: 1px solid rgba(94,167,255,.3);
+            border-radius: 34px;
+
+            animation:
+                loaderSpin 5s linear infinite;
+        }
+
+        .loader-logo span {
+            font-size: 23px;
+            font-weight: 1000;
+            color: white;
+            letter-spacing: -.08em;
+        }
+
+        .loader-text {
+            margin-top: 22px;
+
+            color: #fff;
+
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .3em;
+        }
+
+        .loader-line {
+            width: 180px;
+            height: 2px;
+
+            margin: 15px auto 0;
+
+            overflow: hidden;
+
+            background: rgba(255,255,255,.08);
+        }
+
+        .loader-line span {
+            display: block;
+
+            width: 45%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--blue),
+                    var(--cyan),
+                    var(--purple)
+                );
+
+            animation:
+                loaderProgress 1.2s ease-in-out infinite;
+        }
+
+        @keyframes loaderPulse {
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes loaderSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loaderProgress {
+            from {
+                transform: translateX(-120%);
+            }
+
+            to {
+                transform: translateX(300%);
+            }
+        }
+
+        /* =========================================================
+           PARTICLES
+           ========================================================= */
+
+        #particles {
+            position: fixed;
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+
+            width: 2px;
+            height: 2px;
+
+            border-radius: 50%;
+
+            background: rgba(130,200,255,.7);
+
+            box-shadow:
+                0 0 10px rgba(94,167,255,.5);
+
+            animation:
+                particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            from {
+                transform:
+                    translate3d(0,110vh,0);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            85% {
+                opacity: .8;
+            }
+
+            to {
+                transform:
+                    translate3d(
+                        var(--move-x),
+                        -15vh,
+                        0
+                    );
+                opacity: 0;
+            }
+        }
+
+        /* =========================================================
+           NAVBAR
+           ========================================================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 5000;
+
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding:
+                0 clamp(18px, 5vw, 70px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,.055);
+
+            background:
+                rgba(3,7,18,.62);
+
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-box {
+            position: relative;
+
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 0 30px rgba(94,167,255,.18);
+        }
+
+        .logo-box::after {
+            content: "";
+
+            position: absolute;
+            inset: -3px;
+
+            border:
+                1px solid rgba(94,167,255,.3);
+
+            border-radius: 17px;
+        }
+
+        .logo-box span {
+            color: white;
+
+            font-size: 13px;
+            font-weight: 1000;
+
+            letter-spacing: -.08em;
+        }
+
+        .logo-text strong {
+            display: block;
+
+            font-size: 14px;
+            font-weight: 1000;
+
+            letter-spacing: .15em;
+        }
+
+        .logo-text small {
+            display: block;
+
+            margin-top: 2px;
+
+            color: var(--dim);
+
+            font-size: 8px;
+            font-weight: 800;
+
+            letter-spacing: .13em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .nav-link {
+            padding: 9px 13px;
+
+            border: 1px solid transparent;
+            border-radius: 10px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            transition: .2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            border-color: var(--border);
+            background: rgba(255,255,255,.035);
+        }
+
+        .nav-start {
+            padding: 11px 18px;
+
+            border:
+                1px solid rgba(94,167,255,.3);
+
+            border-radius: 11px;
+
+            background:
+                rgba(94,167,255,.1);
+
+            color: var(--blue);
+
+            font-size: 10px;
+            font-weight: 900;
+
+            transition: .2s ease;
+        }
+
+        .nav-start:hover {
+            transform: translateY(-2px);
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            border-color: transparent;
+
+            box-shadow:
+                0 10px 30px rgba(94,167,255,.2);
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .hero {
+            position: relative;
+            z-index: 1;
+
+            min-height: 100vh;
+
+            display: grid;
+            align-items: center;
+
+            padding:
+                130px
+                clamp(20px, 6vw, 90px)
+                80px;
+        }
+
+        .hero-grid {
+            width: min(1380px, 100%);
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.1fr)
+                minmax(400px, .9fr);
+
+            gap: clamp(35px, 7vw, 100px);
+
+            align-items: center;
+        }
+
+        .hero-content {
+            animation:
+                heroIn .8s ease both;
+        }
+
+        @keyframes heroIn {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 7px 11px;
+
+            border:
+                1px solid rgba(94,167,255,.2);
+
+            border-radius: 99px;
+
+            background:
+                rgba(94,167,255,.055);
+
+            color: var(--blue);
+
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: .14em;
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 10px var(--green);
+
+            animation:
+                blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: .25;
+            }
+        }
+
+        .hero h1 {
+            max-width: 850px;
+
+            margin-top: 22px;
+
+            font-size:
+                clamp(
+                    52px,
+                    8vw,
+                    112px
+                );
+
+            line-height: .9;
+
+            letter-spacing: -.065em;
+
+            font-weight: 1000;
+        }
+
+        .hero h1 .gradient {
+            display: block;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    #fff 0%,
+                    #82bfff 38%,
+                    #9c80ff 72%,
+                    #fff 100%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            background-size: 200% auto;
+
+            animation:
+                gradientMove 6s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-description {
+            max-width: 690px;
+
+            margin-top: 27px;
+
+            color: var(--muted);
+
+            font-size:
+                clamp(
+                    14px,
+                    1.5vw,
+                    17px
+                );
+
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 34px;
+        }
+
+        .primary-btn {
+            position: relative;
+
+            min-height: 56px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 0 23px;
+
+            overflow: hidden;
+
+            border: 0;
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            color: white;
+
+            font-size: 11px;
+            font-weight: 1000;
+
+            box-shadow:
+                0 15px 45px rgba(94,167,255,.2);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .primary-btn::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -100%;
+
+            width: 70%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.28),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            transition: left .6s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 20px 60px rgba(94,167,255,.3);
+        }
+
+        .primary-btn:hover::before {
+            left: 140%;
+        }
+
+        .secondary-btn {
+            min-height: 56px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 22px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            transition: .2s ease;
+        }
+
+        .secondary-btn:hover {
+            transform: translateY(-2px);
+
+            color: white;
+
+            border-color:
+                var(--border-hover);
+
+            background:
+                rgba(255,255,255,.055);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+
+            margin-top: 32px;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--dim);
+
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .04em;
+        }
+
+        .meta-icon {
+            width: 25px;
+            height: 25px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            color: var(--blue);
+        }
+
+        /* =========================================================
+           HERO VISUAL
+           ========================================================= */
+
+        .hero-visual {
+            position: relative;
+
+            min-height: 570px;
+
+            display: grid;
+            place-items: center;
+
+            animation:
+                visualIn 1s .15s ease both;
+        }
+
+        @keyframes visualIn {
+            from {
+                opacity: 0;
+                transform: scale(.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .orb {
+            position: absolute;
+
+            width:
+                clamp(
+                    280px,
+                    32vw,
+                    470px
+                );
+
+            aspect-ratio: 1;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    rgba(255,255,255,.16),
+                    transparent 18%
+                ),
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(94,167,255,.15),
+                    transparent 55%
+                ),
+                radial-gradient(
+                    circle at center,
+                    rgba(139,108,255,.08),
+                    transparent 70%
+                );
+
+            filter: blur(.2px);
+
+            box-shadow:
+                0 0 120px rgba(94,167,255,.12);
+
+            animation:
+                orbFloat 7s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat {
+            0%,100% {
+                transform:
+                    translateY(0)
+                    rotate(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-15px)
+                    rotate(5deg);
+            }
+        }
+
+        .orbit {
+            position: absolute;
+
+            width:
+                clamp(
+                    330px,
+                    40vw,
+                    570px
+                );
+
+            aspect-ratio: 1;
+
+            border:
+                1px solid
+                rgba(94,167,255,.13);
+
+            border-radius: 50%;
+
+            transform:
+                rotateX(66deg)
+                rotateZ(-18deg);
+
+            animation:
+                orbitSpin 18s linear infinite;
+        }
+
+        .orbit::after {
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+            left: -4px;
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--cyan);
+
+            box-shadow:
+                0 0 20px var(--cyan),
+                0 0 45px var(--cyan);
+        }
+
+        .orbit.two {
+            width:
+                clamp(
+                    280px,
+                    34vw,
+                    480px
+                );
+
+            transform:
+                rotateX(70deg)
+                rotateZ(62deg);
+
+            animation-duration: 13s;
+            animation-direction: reverse;
+
+            border-color:
+                rgba(139,108,255,.15);
+        }
+
+        .orbit.two::after {
+            background: var(--purple);
+
+            box-shadow:
+                0 0 20px var(--purple),
+                0 0 45px var(--purple);
+        }
+
+        @keyframes orbitSpin {
+            to {
+                transform:
+                    rotateX(66deg)
+                    rotateZ(342deg);
+            }
+        }
+
+        .exam-card {
+            position: relative;
+            z-index: 2;
+
+            width:
+                min(
+                    100%,
+                    430px
+                );
+
+            padding: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.075),
+                    rgba(255,255,255,.025)
+                );
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 35px 100px rgba(0,0,0,.4),
+                inset 0 1px 0 rgba(255,255,255,.07);
+
+            transform:
+                perspective(1000px)
+                rotateY(-4deg)
+                rotateX(2deg);
+
+            transition:
+                transform .4s ease;
+        }
+
+        .exam-card:hover {
+            transform:
+                perspective(1000px)
+                rotateY(0)
+                rotateX(0)
+                translateY(-5px);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-bottom: 16px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .card-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: var(--green);
+
+            font-size: 8px;
+            font-weight: 900;
+
+            letter-spacing: .12em;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 10px var(--green);
+        }
+
+        .card-id {
+            color: var(--dim);
+
+            font-family: monospace;
+
+            font-size: 8px;
+        }
+
+        .card-title {
+            margin-top: 25px;
+
+            font-size: 29px;
+            font-weight: 1000;
+
+            letter-spacing: -.04em;
+        }
+
+        .card-subtitle {
+            margin-top: 7px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+        .card-progress {
+            margin-top: 27px;
+        }
+
+        .card-progress-top {
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--dim);
+
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+        .card-progress-bar {
+            height: 6px;
+
+            margin-top: 8px;
+
+            overflow: hidden;
+
+            border-radius: 99px;
+
+            background:
+                rgba(255,255,255,.06);
+        }
+
+        .card-progress-bar span {
+            display: block;
+
+            width: 64%;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--blue),
+                    var(--cyan),
+                    var(--purple)
+                );
+
+            animation:
+                progressGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes progressGlow {
+            from {
+                filter: brightness(.9);
+            }
+
+            to {
+                filter: brightness(1.25);
+            }
+        }
+
+        .card-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 7px;
+
+            margin-top: 17px;
+        }
+
+        .card-stat {
+            padding: 13px 10px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.025);
+        }
+
+        .card-stat strong {
+            display: block;
+
+            font-size: 17px;
+        }
+
+        .card-stat span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: var(--dim);
+
+            font-size: 7px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: .07em;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 18px;
+            padding-top: 15px;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+        .card-footer small {
+            color: var(--dim);
+            font-size: 8px;
+        }
+
+        .card-chip {
+            padding: 6px 8px;
+
+            border-radius: 8px;
+
+            color: var(--blue);
+
+            background:
+                rgba(94,167,255,.08);
+
+            font-size: 7px;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           SECTION
+           ========================================================= */
+
+        .section {
+            position: relative;
+            z-index: 1;
+
+            width:
+                min(
+                    1280px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                100px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+
+            margin-bottom: 40px;
+        }
+
+        .section-label {
+            color: var(--blue);
+
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: .2em;
+        }
+
+        .section-heading h2 {
+            margin-top: 10px;
+
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    54px
+                );
+
+            line-height: 1;
+
+            letter-spacing: -.05em;
+        }
+
+        .section-heading p {
+            margin-top: 15px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           FEATURE CARDS
+           ========================================================= */
+
+        .features {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 13px;
+        }
+
+        .feature {
+            position: relative;
+
+            min-height: 235px;
+
+            padding: 24px;
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.045),
+                    rgba(255,255,255,.018)
+                );
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .feature::after {
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            right: -80px;
+            bottom: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(94,167,255,.06);
+
+            filter: blur(25px);
+        }
+
+        .feature:hover {
+            transform: translateY(-6px);
+
+            border-color:
+                var(--border-hover);
+        }
+
+        .feature-icon {
+            width: 47px;
+            height: 47px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 14px;
+
+            background:
+                rgba(94,167,255,.08);
+
+            border:
+                1px solid
+                rgba(94,167,255,.13);
+
+            color: var(--blue);
+
+            font-size: 18px;
+        }
+
+        .feature h3 {
+            margin-top: 22px;
+
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .feature p {
+            margin-top: 9px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           EXAM SPEC
+           ========================================================= */
+
+        .spec-panel {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 13px;
+        }
+
+        .spec-card {
+            padding: 27px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            background:
+                rgba(255,255,255,.025);
+
+            box-shadow: var(--shadow);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 14px 0;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+        .spec-row:last-child {
+            border-bottom: 0;
+        }
+
+        .spec-row span:first-child {
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+        .spec-row span:last-child {
+            color: var(--text);
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .difficulty {
+            color: var(--danger) !important;
+        }
+
+        /* =========================================================
+           CTA
+           ========================================================= */
+
+        .cta {
+            position: relative;
+
+            padding:
+                clamp(40px, 7vw, 75px);
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(94,167,255,.17);
+
+            border-radius: 32px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 50%,
+                    rgba(94,167,255,.12),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 85% 50%,
+                    rgba(139,108,255,.12),
+                    transparent 35%
+                ),
+                rgba(255,255,255,.025);
+
+            text-align: center;
+        }
+
+        .cta::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.04),
+                    transparent
+                );
+
+            transform:
+                translateX(-100%);
+
+            animation:
+                ctaSweep 5s ease-in-out infinite;
+        }
+
+        @keyframes ctaSweep {
+            50%,100% {
+                transform:
+                    translateX(100%);
+            }
+        }
+
+        .cta h2 {
+            position: relative;
+
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    58px
+                );
+
+            letter-spacing: -.05em;
+        }
+
+        .cta p {
+            position: relative;
+
+            max-width: 600px;
+
+            margin: 15px auto 27px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        footer {
+            position: relative;
+            z-index: 1;
+
+            width:
+                min(
+                    1280px,
+                    calc(100% - 40px)
+                );
+
+            margin: auto;
+
+            padding:
+                30px 0 40px;
+
+            border-top:
+                1px solid var(--border);
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            color: var(--dim);
+
+            font-size: 9px;
+        }
+
+        .footer-brand {
+            font-weight: 900;
+            letter-spacing: .1em;
+        }
+
+        /* =========================================================
+           SCROLL REVEAL
+           ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                max-width: 850px;
+            }
+
+            .hero-visual {
+                min-height: 500px;
+            }
+
+            .features {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            .navbar {
+                height: 65px;
+            }
+
+            .nav-links .nav-link {
+                display: none;
+            }
+
+            .nav-start {
+                padding:
+                    9px 12px;
+            }
+
+            .hero {
+                min-height: auto;
+
+                padding:
+                    120px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size:
+                    clamp(
+                        48px,
+                        16vw,
+                        78px
+                    );
+            }
+
+            .hero-actions {
+                display: grid;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+            .hero-visual {
+                min-height: 440px;
+            }
+
+            .exam-card {
+                width: min(390px, 100%);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .logo-text small {
+                display: none;
+            }
+
+            .hero-description {
+                font-size: 13px;
+            }
+
+            .hero-meta {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-visual {
+                min-height: 390px;
+            }
+
+            .exam-card {
+                padding: 17px;
+            }
+
+            .card-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOADER
+     ========================================================= -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-core">
+
+        <div class="loader-logo">
+            <span>S6</span>
+        </div>
+
+        <div class="loader-text">
+            SMART SIX
+        </div>
+
+        <div class="loader-line">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     PARTICLES
+     ========================================================= -->
+
+<div id="particles"></div>
+
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+
+<nav class="navbar">
+
+    <a
+        href="#top"
+        class="logo"
+        aria-label="SMART SIX Home">
+
+        <div class="logo-box">
+            <span>S6</span>
+        </div>
+
+        <div class="logo-text">
+            <strong>SMART SIX</strong>
+            <small>ENGLISH EXAMINATION</small>
+        </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a
+            href="#features"
+            class="nav-link">
+            Features
+        </a>
+
+        <a
+            href="#specification"
+            class="nav-link">
+            Exam
+        </a>
+
+        <a
+            href="#about"
+            class="nav-link">
+            About
+        </a>
+
+        <a
+            href="exam.html"
+            class="nav-start">
+            Start Exam →
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<main id="top">
+
+<section class="hero">
+
+    <div class="hero-grid">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                ADVANCED ENGLISH ASSESSMENT
+            </div>
+
+
+            <h1>
+
+                Test your
+
+                <span class="gradient">
+                    English limits.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                SMART SIX is a high-difficulty English
+                examination environment designed to challenge
+                advanced grammar, vocabulary, comprehension,
+                precision, and analytical language skills.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="exam.html"
+                    class="primary-btn">
+
+                    Begin Examination
+
+                    <span>→</span>
+
+                </a>
+
+                <a
+                    href="#features"
+                    class="secondary-btn">
+
+                    Explore Platform
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-meta">
+
+                <div class="hero-meta-item">
+
+                    <span class="meta-icon">
+                        250
+                    </span>
+
+                    Questions
+
+                </div>
+
+                <div class="hero-meta-item">
+
+                    <span class="meta-icon">
+                        180
+                    </span>
+
+                    Minutes
+
+                </div>
+
+                <div class="hero-meta-item">
+
+                    <span class="meta-icon">
+                        60%
+                    </span>
+
+                    Pass Mark
+
+                </div>
+
+                <div class="hero-meta-item">
+
+                    <span class="meta-icon">
+                        ∞
+                    </span>
+
+                    Autosave
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             VISUAL
+             ===================================================== -->
+
+        <div class="hero-visual">
+
+            <div class="orb"></div>
+
+            <div class="orbit"></div>
+
+            <div class="orbit two"></div>
+
+
+            <div class="exam-card">
+
+                <div class="card-top">
+
+                    <div class="card-status">
+
+                        <span class="status-dot"></span>
+
+                        SYSTEM READY
+
+                    </div>
+
+                    <div class="card-id">
+                        S6.EXAM.250
+                    </div>
+
+                </div>
+
+
+                <div class="card-title">
+                    ADVANCED<br>
+                    ENGLISH
+                </div>
+
+                <div class="card-subtitle">
+                    Comprehensive proficiency assessment
+                </div>
+
+
+                <div class="card-progress">
+
+                    <div class="card-progress-top">
+
+                        <span>
+                            EXAM CAPACITY
+                        </span>
+
+                        <span>
+                            250 QUESTIONS
+                        </span>
+
+                    </div>
+
+                    <div class="card-progress-bar">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="card-stats">
+
+                    <div class="card-stat">
+
+                        <strong>250</strong>
+
+                        <span>
+                            Questions
+                        </span>
+
+                    </div>
+
+                    <div class="card-stat">
+
+                        <strong>180</strong>
+
+                        <span>
+                            Minutes
+                        </span>
+
+                    </div>
+
+                    <div class="card-stat">
+
+                        <strong>60%</strong>
+
+                        <span>
+                            Pass Mark
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-footer">
+
+                    <small>
+                        ZERO EXTERNAL DEPENDENCIES
+                    </small>
+
+                    <span class="card-chip">
+                        READY
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES
+     ========================================================= -->
+
+<section
+    class="section reveal"
+    id="features">
+
+    <div class="section-heading">
+
+        <div class="section-label">
+            PLATFORM
+        </div>
+
+        <h2>
+            Built for serious assessment.
+        </h2>
+
+        <p>
+            Every part of the examination interface is
+            designed around accuracy, continuity and
+            focused performance.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <article class="feature">
+
+            <div class="feature-icon">
+                ◈
+            </div>
+
+            <h3>
+                Advanced Question Bank
+            </h3>
+
+            <p>
+                A large examination architecture designed
+                for challenging English assessment across
+                multiple difficulty levels.
+            </p>
+
+        </article>
+
+
+        <article class="feature">
+
+            <div class="feature-icon">
+                ◷
+            </div>
+
+            <h3>
+                Precision Timing
+            </h3>
+
+            <p>
+                A persistent timestamp-based examination
+                timer keeps the session accurate even when
+                the browser is refreshed or temporarily inactive.
+            </p>
+
+        </article>
+
+
+        <article class="feature">
+
+            <div class="feature-icon">
+                ✓
+            </div>
+
+            <h3>
+                Smart Autosave
+            </h3>
+
+            <p>
+                Selected answers and marked questions are
+                continuously stored locally throughout the
+                examination.
+            </p>
+
+        </article>
+
+
+        <article class="feature">
+
+            <div class="feature-icon">
+                ◆
+            </div>
+
+            <h3>
+                Question Navigator
+            </h3>
+
+            <p>
+                Move instantly between questions, locate
+                unanswered items, review marked questions,
+                and jump directly to any question number.
+            </p>
+
+        </article>
+
+
+        <article class="feature">
+
+            <div class="feature-icon">
+                ⌨
+            </div>
+
+            <h3>
+                Keyboard Control
+            </h3>
+
+            <p>
+                Keyboard shortcuts provide a faster workflow
+                for answer selection, navigation, marking,
+                and clearing responses.
+            </p>
+
+        </article>
+
+
+        <article class="feature">
+
+            <div class="feature-icon">
+                ◐
+            </div>
+
+            <h3>
+                Adaptive Interface
+            </h3>
+
+            <p>
+                Responsive layouts, fullscreen mode, theme
+                controls and adjustable text sizing provide
+                a flexible examination environment.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SPECIFICATION
+     ========================================================= -->
+
+<section
+    class="section reveal"
+    id="specification">
+
+    <div class="section-heading">
+
+        <div class="section-label">
+            EXAMINATION
+        </div>
+
+        <h2>
+            Know the challenge.
+        </h2>
+
+        <p>
+            Review the core examination parameters before
+            entering the assessment environment.
+        </p>
+
+    </div>
+
+
+    <div class="spec-panel">
+
+        <div class="spec-card">
+
+            <div class="spec-row">
+                <span>Question Count</span>
+                <span>250</span>
+            </div>
+
+            <div class="spec-row">
+                <span>Time Limit</span>
+                <span>180 Minutes</span>
+            </div>
+
+            <div class="spec-row">
+                <span>Pass Requirement</span>
+                <span>150 / 250</span>
+            </div>
+
+            <div class="spec-row">
+                <span>Pass Percentage</span>
+                <span>60%</span>
+            </div>
+
+        </div>
+
+
+        <div class="spec-card">
+
+            <div class="spec-row">
+                <span>Difficulty</span>
+                <span class="difficulty">
+                    EXTREME
+                </span>
+            </div>
+
+            <div class="spec-row">
+                <span>Answer Storage</span>
+                <span>LOCAL AUTOSAVE</span>
+            </div>
+
+            <div class="spec-row">
+                <span>Navigation</span>
+                <span>FULL CONTROL</span>
+            </div>
+
+            <div class="spec-row">
+                <span>Result System</span>
+                <span>AUTOMATED</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT / CTA
+     ========================================================= -->
+
+<section
+    class="section reveal"
+    id="about">
+
+    <div class="cta">
+
+        <h2>
+            Ready to measure your level?
+        </h2>
+
+        <p>
+            Enter the SMART SIX examination environment
+            and complete the full assessment.
+            Your answers are automatically preserved
+            throughout the session.
+        </p>
+
+        <a
+            href="exam.html"
+            class="primary-btn">
+
+            Enter SMART SIX
+
+            <span>→</span>
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <div class="footer-brand">
+        SMART SIX
+    </div>
+
+    <div>
+        ADVANCED ENGLISH EXAMINATION PLATFORM
+    </div>
+
+    <div>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script>
+(() => {
+
+    "use strict";
+
+
+    /* =========================================================
+       LOADER
+       ========================================================= */
+
+    const loader =
+        document.getElementById("loader");
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            setTimeout(() => {
+
+                loader.classList.add("hide");
+
+            }, 650);
+
+        }
+    );
+
+
+    /* =========================================================
+       PARTICLES
+       ========================================================= */
+
+    const particleContainer =
+        document.getElementById("particles");
+
+    const particleCount =
+        window.innerWidth < 600
+            ? 35
+            : 65;
+
+    const fragment =
+        document.createDocumentFragment();
+
+    for (
+        let i = 0;
+        i < particleCount;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("span");
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            `${Math.random() * 100}%`;
+
+        particle.style.setProperty(
+            "--move-x",
+            `${(Math.random() * 240) - 120}px`
+        );
+
+        particle.style.animationDuration =
+            `${8 + Math.random() * 14}s`;
+
+        particle.style.animationDelay =
+            `${Math.random() * -20}s`;
+
+        const size =
+            1 + Math.random() * 2;
+
+        particle.style.width =
+            `${size}px`;
+
+        particle.style.height =
+            `${size}px`;
+
+        fragment.appendChild(
+            particle
+        );
+
+    }
+
+    particleContainer.appendChild(
+        fragment
+    );
+
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+    if (
+        "IntersectionObserver"
+        in window
+    ) {
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList
+                                    .add("visible");
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: .12
+                }
+            );
+
+        revealElements.forEach(
+            element => {
+
+                observer.observe(
+                    element
+                );
+
+            }
+        );
+
+    } else {
+
+        revealElements.forEach(
+            element => {
+
+                element.classList.add(
+                    "visible"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       YEAR
+       ========================================================= */
+
+    const year =
+        document.getElementById("year");
+
+    if (year) {
+
+        year.textContent =
+            new Date().getFullYear();
+
+    }
+
+
+    /* =========================================================
+       MOUSE PARALLAX
+       ========================================================= */
+
+    const visual =
+        document.querySelector(
+            ".hero-visual"
+        );
+
+    const card =
+        document.querySelector(
+            ".exam-card"
+        );
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (
+        visual &&
+        card &&
+        !reduceMotion &&
+        window.innerWidth > 900
+    ) {
+
+        visual.addEventListener(
+            "mousemove",
+            event => {
+
+                const rect =
+                    visual.getBoundingClientRect();
+
+                const x =
+                    (
+                        event.clientX -
+                        rect.left
+                    ) / rect.width -
+                    .5;
+
+                const y =
+                    (
+                        event.clientY -
+                        rect.top
+                    ) / rect.height -
+                    .5;
+
+                card.style.transform =
+                    `
+                    perspective(1000px)
+                    rotateY(${x * 7}deg)
+                    rotateX(${y * -5}deg)
+                    translateY(-4px)
+                    `;
+
+            }
+        );
+
+
+        visual.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform =
+                    `
+                    perspective(1000px)
+                    rotateY(-4deg)
+                    rotateX(2deg)
+                    `;
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       SMOOTH ANCHOR OFFSET
+       ========================================================= */
+
+    document.querySelectorAll(
+        'a[href^="#"]'
+    ).forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior:
+                            reduceMotion
+                                ? "auto"
+                                : "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       PREVENT ACCIDENTAL HASH JUMP
+       ========================================================= */
+
+    if (
+        window.location.hash === "#top"
+    ) {
+
+        history.replaceState(
+            null,
+            "",
+            window.location.pathname +
+            window.location.search
+        );
+
+        window.scrollTo(0, 0);
+
+    }
+
+
+})();
+</script>
+
+</body>
+</html>
