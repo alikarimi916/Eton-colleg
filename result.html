@@ -1,0 +1,4082 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SMART SIX — Examination Result</title>
+
+    <meta
+        name="description"
+        content="SMART SIX Advanced English Examination — Final Result"
+    >
+
+    <meta name="theme-color" content="#050812">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =========================================================
+           SMART SIX — FINAL RESULT
+           Version 3.0
+           Standalone / No external dependencies
+        ========================================================= */
+
+        :root {
+            --bg: #04060b;
+            --bg-soft: #070b14;
+            --panel: rgba(12, 17, 29, .82);
+            --panel-2: rgba(16, 22, 38, .92);
+
+            --line: rgba(255,255,255,.075);
+            --line-strong: rgba(255,255,255,.13);
+
+            --text: #f7f9ff;
+            --muted: #8994aa;
+            --muted-2: #5e697d;
+
+            --cyan: #22d3ee;
+            --blue: #3b82f6;
+            --violet: #8b5cf6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --amber: #f59e0b;
+
+            --shadow:
+                0 30px 90px rgba(0,0,0,.45);
+
+            --radius-xl: 30px;
+            --radius-lg: 22px;
+            --radius-md: 15px;
+
+            --font: "Inter", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            color: var(--text);
+
+            font-family: var(--font);
+
+            background:
+                radial-gradient(
+                    circle at 8% 8%,
+                    rgba(34,211,238,.10),
+                    transparent 27%
+                ),
+                radial-gradient(
+                    circle at 92% 12%,
+                    rgba(139,92,246,.11),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(59,130,246,.07),
+                    transparent 38%
+                ),
+                linear-gradient(
+                    145deg,
+                    #03050a,
+                    #070b14 52%,
+                    #03050a
+                );
+
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+            z-index: -1;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            right: -250px;
+            top: 35%;
+
+            border-radius: 50%;
+
+            background: rgba(34,211,238,.035);
+
+            filter: blur(80px);
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        ::selection {
+            color: #fff;
+            background: rgba(34,211,238,.25);
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            border: 0;
+        }
+
+        .container {
+            width: min(1440px, calc(100% - 36px));
+            margin: auto;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            height: 74px;
+
+            background:
+                rgba(4,6,11,.72);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+
+            border-bottom:
+                1px solid var(--line);
+        }
+
+        .header-inner {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(34,211,238,.18),
+                    rgba(139,92,246,.20)
+                );
+
+            border: 1px solid var(--line-strong);
+
+            color: white;
+
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: -1px;
+
+            box-shadow:
+                0 0 35px rgba(34,211,238,.08);
+        }
+
+        .brand-name {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .brand-sub {
+            margin-top: 3px;
+
+            color: var(--muted-2);
+
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 14px rgba(34,197,94,.8);
+
+            animation: livePulse 2s infinite;
+        }
+
+        @keyframes livePulse {
+            0%,100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .35;
+                transform: scale(.75);
+            }
+        }
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        main {
+            padding: 55px 0 90px;
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 13px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(34,211,238,.055);
+
+            border:
+                1px solid rgba(34,211,238,.14);
+
+            color: var(--cyan);
+
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 2px;
+
+            margin-bottom: 17px;
+        }
+
+        .eyebrow::before {
+            content: "";
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: currentColor;
+
+            box-shadow:
+                0 0 10px currentColor;
+        }
+
+        .hero-title h1 {
+            font-size: clamp(38px, 6vw, 76px);
+            line-height: .95;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+
+            background:
+                linear-gradient(
+                    105deg,
+                    #fff 5%,
+                    #a5f3fc 43%,
+                    #c4b5fd 88%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .hero-title p {
+            margin: 17px auto 0;
+
+            max-width: 650px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        /* =========================================================
+           MAIN RESULT CARD
+        ========================================================= */
+
+        .result-card {
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                360px
+                minmax(0,1fr);
+
+            gap: 35px;
+
+            padding: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,22,38,.92),
+                    rgba(7,11,20,.82)
+                );
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                var(--radius-xl);
+
+            box-shadow:
+                var(--shadow);
+
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            left: -330px;
+            top: -330px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(34,211,238,.06);
+
+            filter: blur(50px);
+
+            pointer-events: none;
+        }
+
+        .result-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            right: -350px;
+            bottom: -350px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139,92,246,.065);
+
+            filter: blur(60px);
+
+            pointer-events: none;
+        }
+
+        /* =========================================================
+           SCORE PANEL
+        ========================================================= */
+
+        .score-panel {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px;
+        }
+
+        .score-ring {
+            --score: 0%;
+            --ring-color: var(--cyan);
+
+            width: 275px;
+            height: 275px;
+
+            position: relative;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                conic-gradient(
+                    var(--ring-color)
+                    var(--score),
+                    rgba(255,255,255,.045)
+                    var(--score)
+                );
+
+            box-shadow:
+                0 0 70px
+                color-mix(
+                    in srgb,
+                    var(--ring-color),
+                    transparent 85%
+                );
+
+            transition:
+                --score 1s ease;
+        }
+
+        .score-ring::before {
+            content: "";
+
+            position: absolute;
+            inset: 12px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    #172139,
+                    #070b14 72%
+                );
+
+            border:
+                1px solid rgba(255,255,255,.06);
+
+            box-shadow:
+                inset 0 0 35px rgba(0,0,0,.35);
+        }
+
+        .score-ring::after {
+            content: "";
+
+            position: absolute;
+            inset: 3px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(255,255,255,.025);
+        }
+
+        .score-content {
+            position: relative;
+            z-index: 2;
+
+            text-align: center;
+        }
+
+        .score-value {
+            direction: ltr;
+
+            font-size: 58px;
+            font-weight: 900;
+
+            letter-spacing: -4px;
+            line-height: 1;
+        }
+
+        .score-symbol {
+            color: var(--muted);
+
+            font-size: 21px;
+            font-weight: 700;
+
+            margin-left: 2px;
+        }
+
+        .score-caption {
+            margin-top: 9px;
+
+            color: var(--muted);
+
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .score-fraction {
+            margin-top: 7px;
+
+            direction: ltr;
+
+            color: var(--muted-2);
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           STATUS
+        ========================================================= */
+
+        .status-box {
+            width: min(100%, 315px);
+
+            margin-top: 25px;
+
+            padding: 18px 20px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            border: 1px solid;
+        }
+
+        .status-box.pass {
+            color: #86efac;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(34,197,94,.10),
+                    rgba(34,197,94,.025)
+                );
+
+            border-color:
+                rgba(34,197,94,.22);
+
+            box-shadow:
+                0 15px 45px rgba(34,197,94,.06);
+        }
+
+        .status-box.fail {
+            color: #fca5a5;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(239,68,68,.10),
+                    rgba(239,68,68,.025)
+                );
+
+            border-color:
+                rgba(239,68,68,.22);
+
+            box-shadow:
+                0 15px 45px rgba(239,68,68,.06);
+        }
+
+        .status-main {
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .status-description {
+            margin-top: 6px;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-threshold {
+            margin-top: 9px;
+
+            color: var(--muted);
+
+            direction: ltr;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           INFORMATION
+        ========================================================= */
+
+        .information {
+            position: relative;
+            z-index: 2;
+        }
+
+        .candidate {
+            padding-bottom: 22px;
+
+            border-bottom:
+                1px solid var(--line);
+
+            margin-bottom: 22px;
+        }
+
+        .candidate-label {
+            color: var(--muted-2);
+
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+        .candidate-name {
+            margin-top: 6px;
+
+            font-size: 27px;
+            font-weight: 900;
+
+            letter-spacing: -.7px;
+        }
+
+        .candidate-id {
+            margin-top: 5px;
+
+            color: var(--muted-2);
+
+            font-size: 9px;
+        }
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 11px;
+        }
+
+        .stat {
+            min-height: 105px;
+
+            padding: 15px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                var(--line-strong);
+        }
+
+        .stat-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .stat-icon {
+            width: 27px;
+            height: 27px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .stat-number {
+            direction: ltr;
+
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .correct {
+            color: #4ade80;
+        }
+
+        .wrong {
+            color: #f87171;
+        }
+
+        .unanswered {
+            color: #fbbf24;
+        }
+
+        .total {
+            color: #67e8f9;
+        }
+
+        /* =========================================================
+           METRICS
+        ========================================================= */
+
+        .metrics {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-top: 15px;
+        }
+
+        .metric {
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,.022);
+
+            border:
+                1px solid var(--line);
+        }
+
+        .metric-top {
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--muted);
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .metric-percent {
+            direction: ltr;
+
+            color: var(--cyan);
+
+            font-weight: 900;
+        }
+
+        .track {
+            height: 7px;
+
+            margin-top: 11px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.05);
+        }
+
+        .track-fill {
+            width: 0%;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--cyan),
+                    var(--blue),
+                    var(--violet)
+                );
+
+            transition:
+                width 1s ease;
+        }
+
+        /* =========================================================
+           META
+        ========================================================= */
+
+        .meta-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 10px;
+
+            margin-top: 15px;
+        }
+
+        .meta {
+            padding: 13px;
+
+            border-radius: 14px;
+
+            border:
+                1px solid var(--line);
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+        .meta-label {
+            color: var(--muted-2);
+
+            font-size: 7px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            margin-top: 6px;
+
+            color: #dce4f5;
+
+            direction: ltr;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           PERFORMANCE
+        ========================================================= */
+
+        .performance {
+            margin-top: 14px;
+
+            padding: 17px;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(34,211,238,.045),
+                    rgba(139,92,246,.045)
+                );
+
+            border:
+                1px solid rgba(34,211,238,.09);
+        }
+
+        .performance-label {
+            color: var(--cyan);
+
+            font-size: 8px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+        }
+
+        .performance-title {
+            margin-top: 6px;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .performance-text {
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           ACTION BAR
+        ========================================================= */
+
+        .action-bar {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 11px;
+
+            margin-top: 20px;
+        }
+
+        .button {
+            min-height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 11px 15px;
+
+            border-radius: 14px;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                border-color .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0891b2,
+                    #2563eb
+                );
+
+            box-shadow:
+                0 12px 35px
+                rgba(37,99,235,.18);
+        }
+
+        .button-secondary {
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid var(--line);
+        }
+
+        .button-danger {
+            color: #fca5a5;
+
+            background:
+                rgba(239,68,68,.045);
+
+            border:
+                1px solid rgba(239,68,68,.15);
+        }
+
+        .button-icon {
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           REVIEW SECTION
+        ========================================================= */
+
+        .review {
+            margin-top: 40px;
+        }
+
+        .review-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 18px;
+        }
+
+        .review-title h2 {
+            font-size: 25px;
+            font-weight: 900;
+
+            letter-spacing: -1px;
+        }
+
+        .review-title p {
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+        .review-tools {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+        .filter {
+            padding: 9px 12px;
+
+            border-radius: 10px;
+
+            color: var(--muted);
+
+            background:
+                rgba(255,255,255,.03);
+
+            border:
+                1px solid var(--line);
+
+            cursor: pointer;
+
+            font-size: 8px;
+            font-weight: 800;
+
+            transition: .2s ease;
+        }
+
+        .filter:hover,
+        .filter.active {
+            color: white;
+
+            background:
+                rgba(34,211,238,.07);
+
+            border-color:
+                rgba(34,211,238,.20);
+        }
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        .search {
+            position: relative;
+
+            margin-bottom: 13px;
+        }
+
+        .search input {
+            width: 100%;
+            height: 49px;
+
+            padding: 0 16px;
+
+            outline: none;
+
+            color: white;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            font-size: 10px;
+
+            transition: .2s ease;
+        }
+
+        .search input:focus {
+            border-color:
+                rgba(34,211,238,.25);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(34,211,238,.04);
+        }
+
+        .search input::placeholder {
+            color: var(--muted-2);
+        }
+
+        /* =========================================================
+           REVIEW LIST
+        ========================================================= */
+
+        .questions {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .question {
+            overflow: hidden;
+
+            border:
+                1px solid var(--line);
+
+            border-left-width: 3px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.022);
+
+            transition:
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .question.correct {
+            border-left-color:
+                var(--green);
+        }
+
+        .question.wrong {
+            border-left-color:
+                var(--red);
+        }
+
+        .question.unanswered {
+            border-left-color:
+                var(--amber);
+        }
+
+        .question:hover {
+            background:
+                rgba(255,255,255,.03);
+
+            border-top-color:
+                var(--line-strong);
+
+            border-right-color:
+                var(--line-strong);
+
+            border-bottom-color:
+                var(--line-strong);
+        }
+
+        .question-head {
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 11px 14px;
+
+            cursor: pointer;
+        }
+
+        .q-number {
+            flex: 0 0 auto;
+
+            width: 39px;
+            height: 39px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 11px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .q-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .q-top {
+            display: flex;
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 5px;
+        }
+
+        .badge {
+            padding: 4px 7px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            color: var(--muted);
+
+            font-size: 7px;
+            font-weight: 900;
+
+            letter-spacing: .5px;
+        }
+
+        .badge.correct {
+            color: #86efac;
+            background:
+                rgba(34,197,94,.08);
+        }
+
+        .badge.wrong {
+            color: #fca5a5;
+            background:
+                rgba(239,68,68,.08);
+        }
+
+        .badge.empty {
+            color: #fcd34d;
+            background:
+                rgba(245,158,11,.08);
+        }
+
+        .q-preview {
+            overflow: hidden;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            color: #d8e0ef;
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .q-arrow {
+            width: 30px;
+            height: 30px;
+
+            flex: 0 0 auto;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            transition:
+                transform .2s ease;
+        }
+
+        .question.open .q-arrow {
+            transform:
+                rotate(180deg);
+        }
+
+        .question-body {
+            display: none;
+
+            padding: 0 14px 17px;
+        }
+
+        .question.open .question-body {
+            display: block;
+        }
+
+        .question-text {
+            padding: 16px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(0,0,0,.15);
+
+            border:
+                1px solid rgba(255,255,255,.04);
+
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .answers {
+            display: grid;
+
+            gap: 7px;
+
+            margin-top: 10px;
+        }
+
+        .answer {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 9px;
+
+            padding: 10px 12px;
+
+            border:
+                1px solid rgba(255,255,255,.045);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,.018);
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .answer.selected {
+            background:
+                rgba(59,130,246,.06);
+
+            border-color:
+                rgba(59,130,246,.22);
+        }
+
+        .answer.correct-answer {
+            background:
+                rgba(34,197,94,.055);
+
+            border-color:
+                rgba(34,197,94,.22);
+        }
+
+        .answer.wrong-answer {
+            background:
+                rgba(239,68,68,.055);
+
+            border-color:
+                rgba(239,68,68,.22);
+        }
+
+        .answer-letter {
+            flex: 0 0 auto;
+
+            width: 24px;
+            height: 24px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 7px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            font-size: 8px;
+            font-weight: 900;
+        }
+
+        .answer-status {
+            margin-left: auto;
+
+            color: var(--muted);
+
+            white-space: nowrap;
+
+            font-size: 7px;
+            font-weight: 900;
+        }
+
+        .question-meta {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 6px;
+
+            margin-top: 10px;
+        }
+
+        .question-meta span {
+            padding: 5px 8px;
+
+            border-radius: 7px;
+
+            color: var(--muted);
+
+            background:
+                rgba(255,255,255,.025);
+
+            font-size: 7px;
+        }
+
+        /* =========================================================
+           EMPTY
+        ========================================================= */
+
+        .empty {
+            padding: 75px 20px;
+
+            text-align: center;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 24px;
+
+            background:
+                rgba(255,255,255,.025);
+        }
+
+        .empty-symbol {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 17px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 19px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            color: var(--muted);
+
+            font-size: 23px;
+            font-weight: 900;
+        }
+
+        .empty h2 {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .empty p {
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .no-match {
+            display: none;
+
+            padding: 38px 20px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 17px;
+
+            background:
+                rgba(255,255,255,.018);
+
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 28px 0;
+
+            color: var(--muted-2);
+
+            text-align: center;
+
+            font-size: 8px;
+            line-height: 2;
+        }
+
+        footer strong {
+            color: var(--muted);
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           TOAST
+        ========================================================= */
+
+        .toast {
+            position: fixed;
+
+            left: 50%;
+            bottom: 25px;
+
+            z-index: 9999;
+
+            min-width:
+                min(360px, calc(100% - 30px));
+
+            padding: 13px 16px;
+
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            border:
+                1px solid var(--line-strong);
+
+            border-radius: 13px;
+
+            background:
+                rgba(13,18,31,.96);
+
+            box-shadow:
+                var(--shadow);
+
+            transform:
+                translate(-50%, 130px);
+
+            opacity: 0;
+
+            transition:
+                .3s ease;
+
+            font-size: 9px;
+        }
+
+        .toast.show {
+            transform:
+                translate(-50%,0);
+
+            opacity: 1;
+        }
+
+        .toast-icon {
+            color: var(--cyan);
+
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media(max-width:1100px) {
+
+            .result-card {
+                grid-template-columns:
+                    290px
+                    minmax(0,1fr);
+            }
+
+            .score-ring {
+                width: 225px;
+                height: 225px;
+            }
+
+            .score-value {
+                font-size: 47px;
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .meta-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .action-bar {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:780px) {
+
+            .container {
+                width:
+                    min(100% - 22px,1440px);
+            }
+
+            main {
+                padding-top: 35px;
+            }
+
+            .result-card {
+                grid-template-columns: 1fr;
+
+                padding: 20px;
+
+                gap: 24px;
+            }
+
+            .score-panel {
+                padding-top: 8px;
+            }
+
+            .review-heading {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .review-tools {
+                width: 100%;
+            }
+
+            .filter {
+                flex: 1;
+            }
+        }
+
+        @media(max-width:520px) {
+
+            .header {
+                height: 65px;
+            }
+
+            .brand-sub,
+            .header-right {
+                display: none;
+            }
+
+            .hero-title h1 {
+                letter-spacing: -2.5px;
+            }
+
+            .hero-title p {
+                font-size: 10px;
+            }
+
+            .result-card {
+                padding: 14px;
+
+                border-radius: 22px;
+            }
+
+            .score-ring {
+                width: 205px;
+                height: 205px;
+            }
+
+            .score-value {
+                font-size: 42px;
+            }
+
+            .stats {
+                gap: 8px;
+            }
+
+            .stat {
+                min-height: 92px;
+
+                padding: 12px;
+            }
+
+            .stat-number {
+                font-size: 21px;
+            }
+
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-bar {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .button {
+                min-height: 46px;
+
+                padding:
+                    9px;
+
+                font-size: 8px;
+            }
+
+            .q-preview {
+                font-size: 9px;
+            }
+        }
+
+        /* =========================================================
+           PRINT
+        ========================================================= */
+
+        @media print {
+
+            @page {
+                margin: 12mm;
+            }
+
+            body {
+                color: #111 !important;
+
+                background: white !important;
+            }
+
+            body::before,
+            body::after,
+            .header,
+            .action-bar,
+            .review-tools,
+            .search,
+            footer,
+            .toast {
+                display: none !important;
+            }
+
+            main {
+                padding: 0;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            .hero-title {
+                margin-bottom: 20px;
+            }
+
+            .hero-title h1 {
+                color: #111 !important;
+
+                -webkit-text-fill-color:
+                    #111 !important;
+            }
+
+            .result-card,
+            .stat,
+            .metric,
+            .meta,
+            .performance,
+            .question,
+            .question-text,
+            .answer {
+                color: #111 !important;
+
+                background: white !important;
+
+                border-color:
+                    #ddd !important;
+
+                box-shadow:
+                    none !important;
+            }
+
+            .question-body {
+                display: block !important;
+            }
+
+            .q-arrow {
+                display: none;
+            }
+
+            .status-box {
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="container header-inner">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                SS
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    SMART SIX
+                </div>
+
+                <div class="brand-sub">
+                    ADVANCED ENGLISH EXAMINATION
+                </div>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+            <span class="live-dot"></span>
+            <span>FINAL RESULT</span>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+    <div class="container">
+
+        <section class="hero-title">
+
+            <div class="eyebrow">
+                FINAL EXAMINATION REPORT
+            </div>
+
+            <h1>
+                EXAM RESULT
+            </h1>
+
+            <p>
+                Your complete SMART SIX Advanced English Examination
+                performance report.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             EMPTY RESULT
+        ====================================================== -->
+
+        <section
+            id="noResult"
+            class="empty"
+            hidden
+        >
+
+            <div class="empty-symbol">
+                ?
+            </div>
+
+            <h2>
+                No Result Found
+            </h2>
+
+            <p>
+                There is no saved examination result available.
+                <br>
+                Please return to the main page.
+            </p>
+
+            <button
+                type="button"
+                class="button button-primary"
+                onclick="goHome()"
+                style="margin:20px auto 0;"
+            >
+                <span>BACK TO HOME</span>
+                <span class="button-icon">→</span>
+            </button>
+
+        </section>
+
+
+        <!-- =====================================================
+             RESULT CONTENT
+        ====================================================== -->
+
+        <div
+            id="resultContent"
+            hidden
+        >
+
+            <section class="result-card">
+
+                <!-- SCORE -->
+
+                <div class="score-panel">
+
+                    <div
+                        id="scoreRing"
+                        class="score-ring"
+                        style="
+                            --score:0%;
+                            --ring-color:#22d3ee;
+                        "
+                    >
+
+                        <div class="score-content">
+
+                            <div>
+                                <span
+                                    id="scoreValue"
+                                    class="score-value"
+                                >
+                                    0
+                                </span>
+
+                                <span class="score-symbol">
+                                    %
+                                </span>
+                            </div>
+
+                            <div class="score-caption">
+                                FINAL SCORE
+                            </div>
+
+                            <div
+                                id="scoreFraction"
+                                class="score-fraction"
+                            >
+                                0 / 250 CORRECT
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="statusBox"
+                        class="status-box"
+                    >
+
+                        <div
+                            id="statusMain"
+                            class="status-main"
+                        >
+                            —
+                        </div>
+
+                        <div
+                            id="statusDescription"
+                            class="status-description"
+                        >
+                            —
+                        </div>
+
+                        <div
+                            id="statusThreshold"
+                            class="status-threshold"
+                        >
+                            PASS MARK: 150 / 250
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMATION -->
+
+                <div class="information">
+
+                    <div class="candidate">
+
+                        <div class="candidate-label">
+                            Candidate
+                        </div>
+
+                        <div
+                            id="candidateName"
+                            class="candidate-name"
+                        >
+                            Student
+                        </div>
+
+                        <div
+                            id="candidateId"
+                            class="candidate-id"
+                        >
+                            SMART SIX Examination
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATS -->
+
+                    <div class="stats">
+
+                        <div class="stat">
+
+                            <div class="stat-head">
+                                <span class="stat-label">
+                                    Correct
+                                </span>
+
+                                <span class="stat-icon">
+                                    ✓
+                                </span>
+                            </div>
+
+                            <div
+                                id="correctValue"
+                                class="stat-number correct"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <div class="stat-head">
+                                <span class="stat-label">
+                                    Wrong
+                                </span>
+
+                                <span class="stat-icon">
+                                    ×
+                                </span>
+                            </div>
+
+                            <div
+                                id="wrongValue"
+                                class="stat-number wrong"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <div class="stat-head">
+                                <span class="stat-label">
+                                    Unanswered
+                                </span>
+
+                                <span class="stat-icon">
+                                    —
+                                </span>
+                            </div>
+
+                            <div
+                                id="unansweredValue"
+                                class="stat-number unanswered"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <div class="stat-head">
+                                <span class="stat-label">
+                                    Total
+                                </span>
+
+                                <span class="stat-icon">
+                                    #
+                                </span>
+                            </div>
+
+                            <div
+                                id="totalValue"
+                                class="stat-number total"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- METRICS -->
+
+                    <div class="metrics">
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+
+                                <span>
+                                    Accuracy
+                                </span>
+
+                                <span
+                                    id="accuracyPercent"
+                                    class="metric-percent"
+                                >
+                                    0%
+                                </span>
+
+                            </div>
+
+                            <div class="track">
+
+                                <div
+                                    id="accuracyBar"
+                                    class="track-fill"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+
+                                <span>
+                                    Completion
+                                </span>
+
+                                <span
+                                    id="completionPercent"
+                                    class="metric-percent"
+                                >
+                                    0%
+                                </span>
+
+                            </div>
+
+                            <div class="track">
+
+                                <div
+                                    id="completionBar"
+                                    class="track-fill"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- META -->
+
+                    <div class="meta-grid">
+
+                        <div class="meta">
+
+                            <div class="meta-label">
+                                ANSWERED
+                            </div>
+
+                            <div
+                                id="answeredMeta"
+                                class="meta-value"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div class="meta">
+
+                            <div class="meta-label">
+                                MARKED
+                            </div>
+
+                            <div
+                                id="markedMeta"
+                                class="meta-value"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div class="meta">
+
+                            <div class="meta-label">
+                                DURATION
+                            </div>
+
+                            <div
+                                id="durationMeta"
+                                class="meta-value"
+                            >
+                                00:00:00
+                            </div>
+
+                        </div>
+
+
+                        <div class="meta">
+
+                            <div class="meta-label">
+                                SUBMISSION
+                            </div>
+
+                            <div
+                                id="submissionMeta"
+                                class="meta-value"
+                            >
+                                MANUAL
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PERFORMANCE -->
+
+                    <div class="performance">
+
+                        <div class="performance-label">
+                            PERFORMANCE ANALYSIS
+                        </div>
+
+                        <div
+                            id="performanceTitle"
+                            class="performance-title"
+                        >
+                            —
+                        </div>
+
+                        <div
+                            id="performanceText"
+                            class="performance-text"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ACTIONS
+            ================================================== -->
+
+            <section class="action-bar">
+
+                <button
+                    type="button"
+                    class="button button-primary"
+                    onclick="printResult()"
+                >
+                    <span class="button-icon">▣</span>
+                    <span>PRINT RESULT</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    onclick="copySummary()"
+                >
+                    <span class="button-icon">⧉</span>
+                    <span>COPY SUMMARY</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    onclick="exportJSON()"
+                >
+                    <span class="button-icon">↓</span>
+                    <span>EXPORT JSON</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="button button-secondary"
+                    onclick="goHome()"
+                >
+                    <span class="button-icon">⌂</span>
+                    <span>HOME</span>
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 REVIEW
+            ================================================== -->
+
+            <section class="review">
+
+                <div class="review-heading">
+
+                    <div class="review-title">
+
+                        <h2>
+                            QUESTION REVIEW
+                        </h2>
+
+                        <p>
+                            Inspect your answers and compare them
+                            with the correct answers.
+                        </p>
+
+                    </div>
+
+
+                    <div class="review-tools">
+
+                        <button
+                            type="button"
+                            class="filter active"
+                            data-filter="all"
+                        >
+                            ALL
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter"
+                            data-filter="correct"
+                        >
+                            CORRECT
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter"
+                            data-filter="wrong"
+                        >
+                            WRONG
+                        </button>
+
+                        <button
+                            type="button"
+                            class="filter"
+                            data-filter="unanswered"
+                        >
+                            UNANSWERED
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="search">
+
+                    <input
+                        id="questionSearch"
+                        type="search"
+                        autocomplete="off"
+                        placeholder="Search questions, subjects, difficulty or answers..."
+                    >
+
+                </div>
+
+
+                <div
+                    id="questions"
+                    class="questions"
+                ></div>
+
+
+                <div
+                    id="noMatch"
+                    class="no-match"
+                >
+                    No questions match your current filter or search.
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <strong>SMART SIX</strong>
+    — Advanced English Examination
+
+    <br>
+
+    © <span id="year"></span> Smart Six. All rights reserved.
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+>
+    <span
+        id="toastIcon"
+        class="toast-icon"
+    >
+        ✓
+    </span>
+
+    <span id="toastMessage">
+        Done
+    </span>
+</div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   SMART SIX — RESULT ENGINE
+========================================================= */
+
+const STORAGE = {
+    result: "smartSixResult",
+    answers: "smartSixAnswers",
+    marked: "smartSixMarked",
+    deadline: "smartSixDeadlineAt",
+    started: "smartSixStartedAt",
+    student: "smartSixStudentName",
+    session: "smartSixExamSession"
+};
+
+const PASS_MARK = 150;
+
+let resultData = null;
+
+let currentFilter = "all";
+
+let currentSearch = "";
+
+let toastTimer = null;
+
+
+/* =========================================================
+   DOM
+========================================================= */
+
+const $ = selector =>
+    document.querySelector(selector);
+
+const els = {
+    noResult: $("#noResult"),
+    resultContent: $("#resultContent"),
+
+    scoreRing: $("#scoreRing"),
+    scoreValue: $("#scoreValue"),
+    scoreFraction: $("#scoreFraction"),
+
+    statusBox: $("#statusBox"),
+    statusMain: $("#statusMain"),
+    statusDescription: $("#statusDescription"),
+
+    candidateName: $("#candidateName"),
+    candidateId: $("#candidateId"),
+
+    correctValue: $("#correctValue"),
+    wrongValue: $("#wrongValue"),
+    unansweredValue: $("#unansweredValue"),
+    totalValue: $("#totalValue"),
+
+    accuracyPercent: $("#accuracyPercent"),
+    accuracyBar: $("#accuracyBar"),
+
+    completionPercent: $("#completionPercent"),
+    completionBar: $("#completionBar"),
+
+    answeredMeta: $("#answeredMeta"),
+    markedMeta: $("#markedMeta"),
+    durationMeta: $("#durationMeta"),
+    submissionMeta: $("#submissionMeta"),
+
+    performanceTitle: $("#performanceTitle"),
+    performanceText: $("#performanceText"),
+
+    questions: $("#questions"),
+    noMatch: $("#noMatch"),
+
+    search: $("#questionSearch"),
+
+    toast: $("#toast"),
+    toastIcon: $("#toastIcon"),
+    toastMessage: $("#toastMessage"),
+
+    year: $("#year")
+};
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function getStorage(key, fallback = null) {
+
+    try {
+
+        const value =
+            localStorage.getItem(key);
+
+        return value === null
+            ? fallback
+            : value;
+
+    } catch {
+
+        return fallback;
+    }
+}
+
+
+function getJSON(key, fallback = null) {
+
+    try {
+
+        const value =
+            localStorage.getItem(key);
+
+        if (!value) {
+            return fallback;
+        }
+
+        return JSON.parse(value);
+
+    } catch {
+
+        return fallback;
+    }
+}
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function toNumber(value, fallback = 0) {
+
+    const n = Number(value);
+
+    return Number.isFinite(n)
+        ? n
+        : fallback;
+}
+
+
+function clamp(value, min, max) {
+
+    return Math.min(
+        Math.max(value, min),
+        max
+    );
+}
+
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+function formatNumber(value) {
+
+    return new Intl.NumberFormat(
+        "en-US"
+    ).format(
+        toNumber(value)
+    );
+}
+
+
+function formatPercent(value) {
+
+    const n =
+        toNumber(value);
+
+    return Number.isInteger(n)
+        ? String(n)
+        : n.toFixed(1);
+}
+
+
+function normalizeIndex(value) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === "" ||
+        value === false
+    ) {
+        return null;
+    }
+
+    const n =
+        Number(value);
+
+    return Number.isInteger(n)
+        ? n
+        : null;
+}
+
+
+function formatDuration(seconds) {
+
+    seconds =
+        Math.max(
+            0,
+            Math.floor(
+                toNumber(seconds)
+            )
+        );
+
+    const hours =
+        Math.floor(
+            seconds / 3600
+        );
+
+    const minutes =
+        Math.floor(
+            (seconds % 3600) / 60
+        );
+
+    const secs =
+        seconds % 60;
+
+    return [
+        String(hours).padStart(2,"0"),
+        String(minutes).padStart(2,"0"),
+        String(secs).padStart(2,"0")
+    ].join(":");
+}
+
+
+function formatDate(value) {
+
+    if (!value) {
+        return "N/A";
+    }
+
+    const date =
+        new Date(value);
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+        return "N/A";
+    }
+
+    return new Intl.DateTimeFormat(
+        "en-US",
+        {
+            year: "numeric",
+            month: "short",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    ).format(date);
+}
+
+
+function optionLetter(index) {
+
+    return [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+    ][index] || "?";
+}
+
+
+/* =========================================================
+   NORMALIZE RESULT
+========================================================= */
+
+function normalizeResult(raw) {
+
+    if (
+        !raw ||
+        typeof raw !== "object"
+    ) {
+        return null;
+    }
+
+    const total =
+        Math.max(
+            0,
+            toNumber(raw.total)
+        );
+
+    let correct =
+        Math.max(
+            0,
+            toNumber(raw.correct)
+        );
+
+    let wrong =
+        Math.max(
+            0,
+            toNumber(raw.wrong)
+        );
+
+    let unanswered =
+        Math.max(
+            0,
+            toNumber(raw.unanswered)
+        );
+
+    correct =
+        Math.min(
+            correct,
+            total
+        );
+
+    wrong =
+        Math.min(
+            wrong,
+            total
+        );
+
+    if (
+        correct +
+        wrong +
+        unanswered !==
+        total
+    ) {
+
+        unanswered =
+            Math.max(
+                0,
+                total -
+                correct -
+                wrong
+            );
+    }
+
+    const answered =
+        Math.min(
+            total,
+            correct + wrong
+        );
+
+    let percentage =
+        toNumber(
+            raw.percentage,
+            total > 0
+                ? correct / total * 100
+                : 0
+        );
+
+    percentage =
+        clamp(
+            percentage,
+            0,
+            100
+        );
+
+    let marked =
+        raw.marked;
+
+    if (
+        Array.isArray(marked)
+    ) {
+        marked =
+            marked.length;
+    }
+
+    marked =
+        Math.max(
+            0,
+            toNumber(marked)
+        );
+
+    return {
+        ...raw,
+
+        total,
+        correct,
+        wrong,
+        unanswered,
+        answered,
+        percentage,
+        marked,
+
+        startedAt:
+            raw.startedAt ||
+            getStorage(
+                STORAGE.started
+            ),
+
+        submittedAt:
+            raw.submittedAt ||
+            new Date().toISOString(),
+
+        autoSubmitted:
+            Boolean(
+                raw.autoSubmitted
+            ),
+
+        details:
+            Array.isArray(raw.details)
+                ? raw.details
+                : []
+    };
+}
+
+
+/* =========================================================
+   LOAD
+========================================================= */
+
+function loadResult() {
+
+    resultData =
+        normalizeResult(
+            getJSON(
+                STORAGE.result
+            )
+        );
+
+    if (!resultData) {
+
+        els.noResult.hidden =
+            false;
+
+        els.resultContent.hidden =
+            true;
+
+        return false;
+    }
+
+    els.noResult.hidden =
+        true;
+
+    els.resultContent.hidden =
+        false;
+
+    return true;
+}
+
+
+/* =========================================================
+   PASS / FAIL
+========================================================= */
+
+function passed() {
+
+    return (
+        resultData.correct >=
+        PASS_MARK
+    );
+}
+
+
+function updateStatus() {
+
+    const isPassed =
+        passed();
+
+    els.statusBox.className =
+        "status-box " +
+        (
+            isPassed
+                ? "pass"
+                : "fail"
+        );
+
+    if (isPassed) {
+
+        els.statusMain.textContent =
+            "PASSED";
+
+        els.statusDescription.textContent =
+            "You have successfully passed the examination.";
+
+    } else {
+
+        els.statusMain.textContent =
+            "FAILED";
+
+        els.statusDescription.textContent =
+            "You did not reach the required passing mark.";
+    }
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+function updateScore() {
+
+    const percentage =
+        clamp(
+            resultData.percentage,
+            0,
+            100
+        );
+
+    const isPassed =
+        passed();
+
+    els.scoreValue.textContent =
+        formatPercent(
+            percentage
+        );
+
+    els.scoreFraction.textContent =
+        `${formatNumber(resultData.correct)} / ${formatNumber(resultData.total)} CORRECT`;
+
+    els.scoreRing.style.setProperty(
+        "--score",
+        percentage + "%"
+    );
+
+    els.scoreRing.style.setProperty(
+        "--ring-color",
+        isPassed
+            ? "#22c55e"
+            : "#ef4444"
+    );
+}
+
+
+/* =========================================================
+   CANDIDATE
+========================================================= */
+
+function updateCandidate() {
+
+    const name =
+        String(
+            resultData.studentName ||
+            resultData.name ||
+            getStorage(
+                STORAGE.student,
+                "Student"
+            )
+        ).trim() ||
+        "Student";
+
+    els.candidateName.textContent =
+        name;
+
+    const examId =
+        resultData.examId ||
+        resultData.sessionId ||
+        "SMART-SIX";
+
+    els.candidateId.textContent =
+        `${examId} • Advanced English Examination`;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+function updateStats() {
+
+    els.correctValue.textContent =
+        formatNumber(
+            resultData.correct
+        );
+
+    els.wrongValue.textContent =
+        formatNumber(
+            resultData.wrong
+        );
+
+    els.unansweredValue.textContent =
+        formatNumber(
+            resultData.unanswered
+        );
+
+    els.totalValue.textContent =
+        formatNumber(
+            resultData.total
+        );
+
+    const accuracy =
+        resultData.answered > 0
+            ? (
+                resultData.correct /
+                resultData.answered
+            ) * 100
+            : 0;
+
+    const completion =
+        resultData.total > 0
+            ? (
+                resultData.answered /
+                resultData.total
+            ) * 100
+            : 0;
+
+    els.accuracyPercent.textContent =
+        formatPercent(
+            accuracy
+        ) + "%";
+
+    els.completionPercent.textContent =
+        formatPercent(
+            completion
+        ) + "%";
+
+    requestAnimationFrame(() => {
+
+        els.accuracyBar.style.width =
+            clamp(
+                accuracy,
+                0,
+                100
+            ) + "%";
+
+        els.completionBar.style.width =
+            clamp(
+                completion,
+                0,
+                100
+            ) + "%";
+    });
+
+    els.answeredMeta.textContent =
+        formatNumber(
+            resultData.answered
+        );
+
+    els.markedMeta.textContent =
+        formatNumber(
+            resultData.marked
+        );
+
+    els.durationMeta.textContent =
+        formatDuration(
+            getDuration()
+        );
+
+    els.submissionMeta.textContent =
+        resultData.autoSubmitted
+            ? "AUTO"
+            : "MANUAL";
+}
+
+
+/* =========================================================
+   DURATION
+========================================================= */
+
+function getDuration() {
+
+    if (
+        Number.isFinite(
+            Number(
+                resultData.duration
+            )
+        )
+    ) {
+
+        return Math.max(
+            0,
+            Number(
+                resultData.duration
+            )
+        );
+    }
+
+    const start =
+        new Date(
+            resultData.startedAt
+        ).getTime();
+
+    const end =
+        new Date(
+            resultData.submittedAt
+        ).getTime();
+
+    if (
+        Number.isFinite(start) &&
+        Number.isFinite(end) &&
+        end >= start
+    ) {
+
+        return Math.floor(
+            (end - start) /
+            1000
+        );
+    }
+
+    return 0;
+}
+
+
+/* =========================================================
+   PERFORMANCE
+========================================================= */
+
+function getPerformanceLevel() {
+
+    const score =
+        resultData.percentage;
+
+    if (score >= 95) {
+        return {
+            title: "Exceptional Performance",
+            text:
+                "Your result demonstrates an outstanding level of accuracy across the examination."
+        };
+    }
+
+    if (score >= 85) {
+        return {
+            title: "Excellent Performance",
+            text:
+                "Your result demonstrates a very strong command of advanced English."
+        };
+    }
+
+    if (score >= 75) {
+        return {
+            title: "Strong Performance",
+            text:
+                "Your result shows a solid command of advanced English structures and concepts."
+        };
+    }
+
+    if (score >= 60) {
+        return {
+            title: "Passing Performance",
+            text:
+                "You reached the required passing threshold. Continued practice can further improve your accuracy."
+        };
+    }
+
+    if (score >= 40) {
+        return {
+            title: "Developing Performance",
+            text:
+                "Your result indicates developing proficiency. Focused practice can help strengthen weak areas."
+        };
+    }
+
+    return {
+        title: "Needs Improvement",
+        text:
+            "Your result is below the required threshold. Additional preparation and targeted practice are recommended."
+    };
+}
+
+
+function updatePerformance() {
+
+    const level =
+        getPerformanceLevel();
+
+    els.performanceTitle.textContent =
+        level.title;
+
+    els.performanceText.textContent =
+        level.text;
+}
+
+
+/* =========================================================
+   QUESTION NORMALIZATION
+========================================================= */
+
+function normalizeQuestion(
+    item,
+    index
+) {
+
+    const options =
+        Array.isArray(item?.options)
+            ? item.options
+            : Array.isArray(item?.choices)
+                ? item.choices
+                : [];
+
+    return {
+
+        id:
+            item?.id ??
+            index + 1,
+
+        subject:
+            item?.subject ||
+            item?.category ||
+            "General",
+
+        difficulty:
+            item?.difficulty ||
+            item?.level ||
+            "Advanced",
+
+        question:
+            item?.question ||
+            item?.text ||
+            item?.questionText ||
+            "Question unavailable.",
+
+        options,
+
+        selected:
+            normalizeIndex(
+                item?.selected ??
+                item?.answer
+            ),
+
+        correctAnswer:
+            normalizeIndex(
+                item?.correctAnswer ??
+                item?.correct
+            )
+    };
+}
+
+
+function questionStatus(item) {
+
+    const selected =
+        item.selected;
+
+    const correct =
+        item.correctAnswer;
+
+    if (
+        selected === null ||
+        selected < 0
+    ) {
+        return "unanswered";
+    }
+
+    if (
+        correct !== null &&
+        selected === correct
+    ) {
+        return "correct";
+    }
+
+    return "wrong";
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function getQuestions() {
+
+    return resultData.details
+        .map(
+            (item,index) =>
+                normalizeQuestion(
+                    item,
+                    index
+                )
+        )
+        .filter(item => {
+
+            const status =
+                questionStatus(item);
+
+            if (
+                currentFilter !== "all" &&
+                status !== currentFilter
+            ) {
+                return false;
+            }
+
+            if (currentSearch) {
+
+                const searchable = [
+                    item.id,
+                    item.subject,
+                    item.difficulty,
+                    item.question,
+                    ...item.options
+                ]
+                    .join(" ")
+                    .toLowerCase();
+
+                if (
+                    !searchable.includes(
+                        currentSearch
+                    )
+                ) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+}
+
+
+/* =========================================================
+   RENDER QUESTIONS
+========================================================= */
+
+function renderQuestions() {
+
+    const questions =
+        getQuestions();
+
+    els.questions.innerHTML = "";
+
+    if (!questions.length) {
+
+        els.noMatch.style.display =
+            "block";
+
+        return;
+    }
+
+    els.noMatch.style.display =
+        "none";
+
+    const fragment =
+        document.createDocumentFragment();
+
+    questions.forEach(item => {
+
+        const status =
+            questionStatus(item);
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            `question ${status}`;
+
+        const badge =
+            status === "correct"
+                ? "CORRECT"
+                : status === "wrong"
+                    ? "WRONG"
+                    : "UNANSWERED";
+
+        const badgeClass =
+            status === "correct"
+                ? "correct"
+                : status === "wrong"
+                    ? "wrong"
+                    : "empty";
+
+        const preview =
+            String(item.question)
+                .replace(/\s+/g," ")
+                .trim();
+
+        card.innerHTML = `
+
+            <div
+                class="question-head"
+                tabindex="0"
+                role="button"
+                aria-expanded="false"
+            >
+
+                <div class="q-number">
+                    ${escapeHTML(item.id)}
+                </div>
+
+                <div class="q-content">
+
+                    <div class="q-top">
+
+                        <span
+                            class="badge ${badgeClass}"
+                        >
+                            ${badge}
+                        </span>
+
+                        <span class="badge">
+                            ${escapeHTML(item.difficulty)}
+                        </span>
+
+                    </div>
+
+                    <div class="q-preview">
+                        ${escapeHTML(preview)}
+                    </div>
+
+                </div>
+
+                <div class="q-arrow">
+                    ↓
+                </div>
+
+            </div>
+
+
+            <div class="question-body">
+
+                <div class="question-text">
+                    ${escapeHTML(item.question)}
+                </div>
+
+                <div class="answers">
+                    ${renderAnswers(item)}
+                </div>
+
+                <div class="question-meta">
+
+                    <span>
+                        Subject: ${escapeHTML(item.subject)}
+                    </span>
+
+                    <span>
+                        Difficulty: ${escapeHTML(item.difficulty)}
+                    </span>
+
+                    <span>
+                        Question #${escapeHTML(item.id)}
+                    </span>
+
+                </div>
+
+            </div>
+        `;
+
+        const head =
+            card.querySelector(
+                ".question-head"
+            );
+
+        head.addEventListener(
+            "click",
+            () => toggleQuestion(card)
+        );
+
+        head.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    toggleQuestion(card);
+                }
+            }
+        );
+
+        fragment.appendChild(card);
+    });
+
+    els.questions.appendChild(
+        fragment
+    );
+}
+
+
+/* =========================================================
+   ANSWERS
+========================================================= */
+
+function renderAnswers(item) {
+
+    if (!item.options.length) {
+
+        return `
+            <div class="answer">
+                <div class="answer-letter">—</div>
+                <div>
+                    Answer options were not saved.
+                </div>
+            </div>
+        `;
+    }
+
+    return item.options
+        .map((option,index) => {
+
+            const selected =
+                item.selected === index;
+
+            const correct =
+                item.correctAnswer === index;
+
+            let classes =
+                "answer";
+
+            let label = "";
+
+            if (correct) {
+
+                classes +=
+                    " correct-answer";
+
+                label =
+                    "CORRECT";
+            }
+
+            if (
+                selected &&
+                !correct
+            ) {
+
+                classes +=
+                    " selected wrong-answer";
+
+                label =
+                    "YOUR ANSWER";
+            }
+
+            if (
+                selected &&
+                correct
+            ) {
+
+                classes +=
+                    " selected";
+
+                label =
+                    "YOUR ANSWER • CORRECT";
+            }
+
+            return `
+
+                <div class="${classes}">
+
+                    <div class="answer-letter">
+                        ${optionLetter(index)}
+                    </div>
+
+                    <div>
+                        ${escapeHTML(option)}
+                    </div>
+
+                    ${
+                        label
+                            ? `
+                                <div class="answer-status">
+                                    ${label}
+                                </div>
+                              `
+                            : ""
+                    }
+
+                </div>
+            `;
+        })
+        .join("");
+}
+
+
+/* =========================================================
+   QUESTION TOGGLE
+========================================================= */
+
+function toggleQuestion(card) {
+
+    const open =
+        card.classList.toggle(
+            "open"
+        );
+
+    const head =
+        card.querySelector(
+            ".question-head"
+        );
+
+    if (head) {
+
+        head.setAttribute(
+            "aria-expanded",
+            String(open)
+        );
+    }
+}
+
+
+/* =========================================================
+   FILTER EVENTS
+========================================================= */
+
+function setupFilters() {
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    document
+                        .querySelectorAll(
+                            ".filter"
+                        )
+                        .forEach(item =>
+                            item.classList.remove(
+                                "active"
+                            )
+                        );
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                    currentFilter =
+                        button.dataset.filter ||
+                        "all";
+
+                    renderQuestions();
+                }
+            );
+        });
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function setupSearch() {
+
+    els.search.addEventListener(
+        "input",
+        event => {
+
+            currentSearch =
+                event.target.value
+                    .trim()
+                    .toLowerCase();
+
+            renderQuestions();
+        }
+    );
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+function buildSummary() {
+
+    const status =
+        passed()
+            ? "PASSED"
+            : "FAILED";
+
+    return [
+        "SMART SIX — FINAL EXAMINATION RESULT",
+        "-------------------------------------",
+        `Candidate: ${els.candidateName.textContent}`,
+        `Status: ${status}`,
+        `Score: ${formatPercent(resultData.percentage)}%`,
+        `Correct: ${resultData.correct}/${resultData.total}`,
+        `Wrong: ${resultData.wrong}`,
+        `Unanswered: ${resultData.unanswered}`,
+        `Answered: ${resultData.answered}`,
+        `Marked: ${resultData.marked}`,
+        `Duration: ${formatDuration(getDuration())}`,
+        `Submission: ${resultData.autoSubmitted ? "AUTO" : "MANUAL"}`,
+        `Started: ${formatDate(resultData.startedAt)}`,
+        `Submitted: ${formatDate(resultData.submittedAt)}`,
+        "-------------------------------------",
+        "SMART SIX Advanced English Examination"
+    ].join("\n");
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+async function copySummary() {
+
+    const summary =
+        buildSummary();
+
+    try {
+
+        if (
+            navigator.clipboard &&
+            navigator.clipboard.writeText
+        ) {
+
+            await navigator.clipboard.writeText(
+                summary
+            );
+
+        } else {
+
+            const textarea =
+                document.createElement(
+                    "textarea"
+                );
+
+            textarea.value =
+                summary;
+
+            textarea.style.position =
+                "fixed";
+
+            textarea.style.opacity =
+                "0";
+
+            document.body.appendChild(
+                textarea
+            );
+
+            textarea.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            textarea.remove();
+        }
+
+        showToast(
+            "Result summary copied to clipboard.",
+            "✓"
+        );
+
+    } catch {
+
+        showToast(
+            "Unable to copy the result summary.",
+            "!"
+        );
+    }
+}
+
+
+/* =========================================================
+   EXPORT JSON
+========================================================= */
+
+function exportJSON() {
+
+    if (!resultData) {
+        return;
+    }
+
+    const payload = {
+        ...resultData,
+
+        exportedAt:
+            new Date().toISOString()
+    };
+
+    const json =
+        JSON.stringify(
+            payload,
+            null,
+            2
+        );
+
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:
+                    "application/json;charset=utf-8"
+            }
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    const date =
+        new Date()
+            .toISOString()
+            .slice(0,10);
+
+    link.href =
+        url;
+
+    link.download =
+        `smart-six-result-${date}.json`;
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(
+        url
+    );
+
+    showToast(
+        "Result exported successfully.",
+        "↓"
+    );
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+function printResult() {
+
+    window.print();
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goHome() {
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* =========================================================
+   CLEAR
+========================================================= */
+
+function clearResult() {
+
+    const confirmed =
+        window.confirm(
+            "Are you sure you want to permanently delete the saved examination result?"
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+    Object.values(STORAGE)
+        .forEach(key => {
+
+            try {
+
+                localStorage.removeItem(
+                    key
+                );
+
+            } catch {}
+        });
+
+    showToast(
+        "Saved examination data has been cleared.",
+        "✓"
+    );
+
+    setTimeout(
+        goHome,
+        900
+    );
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(
+    message,
+    icon = "✓"
+) {
+
+    els.toastIcon.textContent =
+        icon;
+
+    els.toastMessage.textContent =
+        message;
+
+    els.toast.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        toastTimer
+    );
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                els.toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2800
+        );
+}
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key.toLowerCase() === "p"
+        ) {
+
+            event.preventDefault();
+
+            printResult();
+        }
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".question.open"
+                )
+                .forEach(card => {
+
+                    card.classList.remove(
+                        "open"
+                    );
+
+                    const head =
+                        card.querySelector(
+                            ".question-head"
+                        );
+
+                    if (head) {
+
+                        head.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+                    }
+                });
+        }
+    }
+);
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+function init() {
+
+    els.year.textContent =
+        new Date().getFullYear();
+
+    setupFilters();
+
+    setupSearch();
+
+    if (!loadResult()) {
+        return;
+    }
+
+    updateCandidate();
+
+    updateStatus();
+
+    updateScore();
+
+    updateStats();
+
+    updatePerformance();
+
+    renderQuestions();
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    init
+);
+</script>
+
+</body>
+</html>
